@@ -28,6 +28,7 @@
 #   CI_BOT_NAME:   The name to use in the git commit attribution
 #   DRUSH_VERSION: The version of Drush to use on Pantheon.
 #                  Optional. Defaults to Drush 8.
+#   MACHINE_TOKEN: Required to login using terminus
 #
 # It is also expected that there should be an SSH private key in
 # $HOME/.ssh that can be used to push code to the Pantheon git repository.
@@ -107,7 +108,10 @@ __EOF__
     # used during login to stdout, which will end up in the log.  It's better
     # to conceal the email address used, to make it harder for a third party
     # to try to log in via a brute-force password-guessing attack.
-    terminus auth login "$PEMAIL" --password="$PPASS" >/dev/null 2>&1
+    #terminus auth login "$PEMAIL" --password="$PPASS" >/dev/null 2>&1
+
+    terminus auth login --machine-token="$MACHINE_TOKEN" >/dev/null 2>&1
+
     check "Logged in to Pantheon via Terminus" "Could not log in to Pantheon with Terminus"
   fi
   echo "Fetch aliases via Terminus"
