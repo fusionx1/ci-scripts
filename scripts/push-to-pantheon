@@ -103,7 +103,7 @@ __EOF__
   if [ $LOGGED_IN == 0 ]
   then
     # Set up Terminus and aliases, and wake up the site
-    echo "Log in to Pantheon via Terminus"
+    echo "1: Log in to Pantheon via Terminus"
     # Redirect output when logging in.  Terminus prints the email address
     # used during login to stdout, which will end up in the log.  It's better
     # to conceal the email address used, to make it harder for a third party
@@ -112,7 +112,7 @@ __EOF__
 
     terminus auth login --machine-token="$MACHINE_TOKEN" >/dev/null 2>&1
 
-    check "Logged in to Pantheon via Terminus" "Could not log in to Pantheon with Terminus"
+    check "2: Logged in to Pantheon via Terminus" "3: Could not log in to Pantheon with Terminus"
   fi
   echo "Fetch aliases via Terminus"
   mkdir -p "$HOME/.drush"
