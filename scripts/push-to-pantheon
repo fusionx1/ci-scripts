@@ -135,7 +135,7 @@ __EOF__
   echo "Wake up the site $PSITE"
   terminus site wake --site="$PSITE" --env="$PENV"
   check "Site wakeup successful" "Could not wake up site"
-  terminus --site="$PSITE" --env="$PENV" drush 'en -y devel pathauto' 
+
   # Make sure we are in git mode
   terminus site set-connection-mode --site="$PSITE" --env="$PENV" --mode=git
   check "Changed connection mode to 'git' for $PSITE $PENV environment" "Could not change connection mode to 'git' for $PSITE $PENV environment"
@@ -265,6 +265,8 @@ __EOF__
     drush --strict=0 $DRUSH_ALIAS -y updatedb
     aborterr "updatedb failed on Pantheon site"
   fi
+  
+    terminus --site="$PSITE" --env="$PENV" drush 'en -y devel pathauto' 
 
   # If we were not given the site uri in a behat configuration file,
   # then look it up via Terminus.
