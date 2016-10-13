@@ -266,7 +266,7 @@ __EOF__
     aborterr "updatedb failed on Pantheon site"
   fi
   
-    terminus --site="$PSITE" --env="$PENV" drush 'en -y devel pathauto' 
+    terminus --site="$PSITE" --env="$PENV" drush 'en -y pathauto' 
 
   # If we were not given the site uri in a behat configuration file,
   # then look it up via Terminus.
